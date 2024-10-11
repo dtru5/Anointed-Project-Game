@@ -1,1 +1,2 @@
-# cs477-project_game
+# Anointed
+## by Dominik Trujillo
