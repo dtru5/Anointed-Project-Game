@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwvto8jffq6mp"]
+
+[ext_resource type="Texture2D" uid="uid://d4apshb3b5rfy" path="res://art/scenery/539c483ff16585f1014ce8bff226bc56.jpg" id="1_h8ele"]
+[ext_resource type="Script" path="res://scripts/battle_scene.gd" id="1_uo4q1"]
+
+[node name="BattleScene" type="CanvasLayer"]
+script = ExtResource("1_uo4q1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_h8ele")
+
+[node name="ui" type="Node2D" parent="."]
+
+[node name="player_monster" type="Sprite2D" parent="ui"]
+position = Vector2(100, 380)
+
+[node name="enemy_monster" type="Sprite2D" parent="ui"]
+position = Vector2(600, 380)

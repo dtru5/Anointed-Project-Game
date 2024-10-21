@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwvto8jffq6mp"]
+
+[ext_resource type="Script" path="res://scripts/battle_scene.gd" id="1_8uj5g"]
+[ext_resource type="Texture2D" uid="uid://d4apshb3b5rfy" path="res://art/scenery/539c483ff16585f1014ce8bff226bc56.jpg" id="1_h8ele"]
+
+[node name="BattleScene" type="Node2D"]
+script = ExtResource("1_8uj5g")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="539c483Ff16585f1014Ce8Bff226Bc56" type="Sprite2D" parent="."]
+position = Vector2(352, 204)
+texture = ExtResource("1_h8ele")
