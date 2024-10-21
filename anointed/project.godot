@@ -16,12 +16,9 @@ config/icon="res://art/icon.svg"
 
 [autoload]
 
+Global="*res://scripts/global.gd"
 Game="*res://global/game.gd"
 Utils="*res://global/utils.gd"
-
-[display]
-
-window/stretch/scale=1.01
 
 [input]
 

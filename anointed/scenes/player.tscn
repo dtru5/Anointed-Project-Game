@@ -3,9 +3,6 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_e3hl1"]
 [ext_resource type="Texture2D" uid="uid://dxm0441y3bxkm" path="res://art/characters/player.png" id="2_p21w2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0oql"]
-size = Vector2(13.2796, 18.4266)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqgiu"]
 atlas = ExtResource("2_p21w2")
 region = Rect2(0, 96, 48, 48)
@@ -291,15 +288,48 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_twakm"]
+radius = 4.0
+
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_e3hl1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 8)
-rotation = -3.14159
-scale = Vector2(1.95789, 1.51955)
-shape = SubResource("RectangleShape2D_m0oql")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_04hhu")
 animation = &"front_idle"
+offset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, -1)
+rotation = -3.14159
+shape = SubResource("CircleShape2D_twakm")
+
+[node name="world_camera" type="Camera2D" parent="."]
+position = Vector2(-1, 1)
+scale = Vector2(-12959.7, -0.858814)
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 608
+limit_bottom = 272
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="cliff_side_camera" type="Camera2D" parent="."]
+position = Vector2(0, 1)
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+limit_right = 308
+limit_bottom = 270
+limit_smoothed = true
+rotation_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.15
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
