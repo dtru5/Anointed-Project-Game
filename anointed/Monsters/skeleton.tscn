@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://eqw7jkg7xqvo"]
+
+[ext_resource type="Texture2D" uid="uid://ctgw32vw452va" path="res://art/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="1_jy6tj"]
+[ext_resource type="Script" path="res://Monsters/skeleton.gd" id="2_g4s7u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux803"]
+atlas = ExtResource("1_jy6tj")
+region = Rect2(0, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28nj5"]
+atlas = ExtResource("1_jy6tj")
+region = Rect2(150, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qjuo"]
+atlas = ExtResource("1_jy6tj")
+region = Rect2(300, 0, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ld26b"]
+atlas = ExtResource("1_jy6tj")
+region = Rect2(450, 0, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m0nh3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux803")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28nj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qjuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ld26b")
+}],
+"loop": true,
+"name": &"skeleton_idle",
+"speed": 7.0
+}]
+
+[node name="Skeleton" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_m0nh3")
+animation = &"skeleton_idle"
+frame = 2
+frame_progress = 0.354696
+script = ExtResource("2_g4s7u")

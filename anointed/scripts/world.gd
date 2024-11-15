@@ -2,9 +2,16 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if Global.game_first_loadin == true:
+	print("in main")
+	print(Global.game_exit_fight)
+	if Global.game_first_loadin == true and Global.game_exit_fight == false:
 		$player.position.x = Global.player_start_posx
 		$player.position.y = Global.player_start_posy
+		
+	elif Global.game_exit_fight == true:
+		$player.position.x = Global.player_first_fight_posx
+		$player.position.y = Global.player_first_fight_posy
+		Global.game_exit_fight = false
 	else:
 		$player.position.x = Global.player_exit_cliffside_posx
 		$player.position.y = Global.player_exit_cliffside_posy

@@ -13,7 +13,7 @@ texture = ExtResource("1_h8ele")
 
 [node name="ui" type="Node2D" parent="."]
 
-[node name="player_monster" type="Sprite2D" parent="ui"]
+[node name="player_monster" type="AnimatedSprite2D" parent="ui"]
 position = Vector2(100, 380)
 
 [node name="enemy_monster" type="Sprite2D" parent="ui"]

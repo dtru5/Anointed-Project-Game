@@ -7,8 +7,13 @@ var player_exit_cliffside_posx = 254
 var player_exit_cliffside_posy = 0
 var player_start_posx = 14
 var player_start_posy = 42
+var player_first_fight_posx
+var player_first_fight_posy
+
+var player_monsters: Array = []
 
 var game_first_loadin = true
+var game_exit_fight = false
 
 func finish_changeScene():
 	if transition_scene == true:
