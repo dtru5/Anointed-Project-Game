@@ -306,24 +306,25 @@ rotation = -3.14159
 shape = SubResource("CircleShape2D_twakm")
 
 [node name="world_camera" type="Camera2D" parent="."]
-position = Vector2(-1, 1)
-scale = Vector2(-12959.7, -0.858814)
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = 0
-limit_right = 608
-limit_bottom = 272
+zoom = Vector2(4, 4)
+limit_left = -66
+limit_top = -34
+limit_right = 541
+limit_bottom = 223
 limit_smoothed = true
 rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+drag_left_margin = 0.15
+drag_top_margin = 0.15
+drag_right_margin = 0.15
+drag_bottom_margin = 0.15
 
 [node name="cliff_side_camera" type="Camera2D" parent="."]
-position = Vector2(0, 1)
 zoom = Vector2(4, 4)
-limit_left = 0
+limit_left = 70
 limit_top = 0
-limit_right = 308
+limit_right = 320
 limit_bottom = 270
 limit_smoothed = true
 rotation_smoothing_enabled = true

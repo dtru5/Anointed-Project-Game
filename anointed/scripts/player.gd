@@ -31,8 +31,13 @@ func player_movement(delta):
 	# Normalize direction vector to avoid faster diagonal movement
 	direction_vector = direction_vector.normalized()
 
+	# Adjust speed if shift is pressed
+	var current_speed = speed
+	if Input.is_action_pressed("sprint"):
+		current_speed *= 1.5  # Sprint multiplier (adjust as needed)
+
 	# Set the velocity based on direction and speed
-	velocity = direction_vector * speed
+	velocity = direction_vector * current_speed
 
 	# Play appropriate animation
 	if direction_vector != Vector2.ZERO:
@@ -41,6 +46,7 @@ func player_movement(delta):
 		play_animation(0)  # Idle animation
 
 	move_and_slide()
+
 
 func update_direction_and_animation(direction_vector):
 	if direction_vector.x > 0:

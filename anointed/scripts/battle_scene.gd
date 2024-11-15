@@ -18,3 +18,7 @@ func _ready() -> void:
 
 	# Set up the enemy sprite as before
 	enemy_sprite.texture = icon
+	
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("escape"):
+		get_tree().change_scene_to_file("res://scenes/world.tscn")
