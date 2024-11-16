@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://82y16mjph7s3"]
+[gd_scene load_steps=11 format=3 uid="uid://82y16mjph7s3"]
 
+[ext_resource type="Script" path="res://scripts/forest.gd" id="1_4wld7"]
 [ext_resource type="Texture2D" uid="uid://boegx42mdewf5" path="res://art/tilesets/plains.png" id="2_o5fc3"]
 [ext_resource type="Texture2D" uid="uid://bho5nuck84fva" path="res://art/tilesets/grass.png" id="3_2q7nn"]
 [ext_resource type="Texture2D" uid="uid://uy5qrmn7fghq" path="res://art/objects/objects.png" id="4_ghwvv"]
@@ -80,9 +81,11 @@ sources/1 = SubResource("TileSetAtlasSource_p4a3x")
 sources/2 = SubResource("TileSetAtlasSource_77mvv")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2pas"]
-size = Vector2(71, 34)
+size = Vector2(47, 65)
 
 [node name="forest" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_4wld7")
 
 [node name="TileMap2" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -97,21 +100,21 @@ layer_2/name = "ysort"
 layer_2/y_sort_enabled = true
 layer_2/tile_data = PackedInt32Array(262149, 2, 5, 327689, 2, 5, 262156, 2, 5, 262161, 2, 5, 327700, 2, 5, 327705, 2, 5, 327710, 2, 5, 262172, 2, 5, 262181, 2, 5, 262178, 2, 5, 262188, 2, 5, 327731, 2, 5, 196662, 2, 5, 262192, 2, 5, 327721, 2, 5, 327695, 2, 5, 262166, 2, 5, 196633, 2, 5, 196639, 2, 5, 196647, 2, 5, 393248, 393218, 7, 393251, 393218, 7, 393262, 393218, 7, 393228, 393218, 7, 393223, 393218, 7, 393254, 655362, 7)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(99, 11, 256, 11, 258, 41, 262, 44, 271, 44, 273, 71, 277, 76, 288, 76, 289, 194, 279, 194, 273, 202, 273, 209, 261, 213, 256, 223, 257, 256, 216, 258, 216, 289, 145, 289, 144, 258, 112, 259, 106, 253, 107, 155, 102, 146, 79, 146, 76, 140, 76, 45, 86, 43, 92, 42, 95, 12, 94, -6, 69, 23, 43, 86, 60, 253, 142, 323, 267, 322, 325, 167, 275, -17, 100, -13, 96, 9, 95, 12)
-
 [node name="player" parent="." instance=ExtResource("5_cr6h4")]
 position = Vector2(16, 123)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1, 71)
+scale = Vector2(5.24, 1)
+polygon = PackedVector2Array(-0.572519, 23, -0.572519, -73, 243.702, -73, 243.702, 648, -0.572519, 648, -0.572519, 87, -9.54199, 87, -9.35115, 22, -0.763359, 23, -16.6031, -13, -14.313, 700, 260.878, 715, 257.824, -156, -17.7481, -124, -7.44275, -9)
+
 [node name="world_transition_point" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world_transition_point"]
-visible = false
-position = Vector2(180.5, 272)
+position = Vector2(-25.5, 125.5)
 shape = SubResource("RectangleShape2D_y2pas")
 
 [connection signal="body_entered" from="world_transition_point" to="." method="_on_world_transition_point_body_entered"]
+[connection signal="body_exited" from="world_transition_point" to="." method="_on_world_transition_point_body_exited"]

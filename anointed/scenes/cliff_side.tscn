@@ -84,6 +84,7 @@ sources/2 = SubResource("TileSetAtlasSource_77mvv")
 size = Vector2(71, 34)
 
 [node name="cliff_side" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_6hu41")
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -114,3 +115,4 @@ position = Vector2(180.5, 272)
 shape = SubResource("RectangleShape2D_y2pas")
 
 [connection signal="body_entered" from="world_transition_point" to="." method="_on_world_transition_point_body_entered"]
+[connection signal="body_exited" from="world_transition_point" to="." method="_on_world_transition_point_body_exited"]

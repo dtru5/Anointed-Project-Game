@@ -113,7 +113,7 @@ position = Vector2(145, 109)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 position = Vector2(-67, -33)
 scale = Vector2(0.991182, 0.77269)
-polygon = PackedVector2Array(29.258, -1.29418, 294.598, -1.29417, 292.58, -63.4148, 353.114, -63.4148, 353.114, -2.58836, 455.012, 0, 455.012, 29.7661, 457.03, 38.8254, 486.288, 38.8254, 486.288, 73.7683, 489.315, 78.945, 493.351, 81.5334, 613.409, 81.5334, 613.409, 352.017, -1.0089, 352.017, -1.0089, 0, 22.1957, 0, 21.1868, -40.1196, -14.1246, -2.58836, -28.2491, 164.361, -37.3292, 374.018, -5.04448, 383.077, 647.712, 377.901, 638.632, -31.0603, 364.212, -68.5915, 277.447, -111.3, 190.682, -104.829, 36.3203, -24.5894, 24.2135, -1.29418)
+polygon = PackedVector2Array(29.258, -1.29418, 294.598, -1.29417, 292.58, -63.4148, 353.114, -63.4148, 353.114, -2.58836, 455.012, 0, 455.012, 29.7661, 457.03, 38.8254, 486.288, 38.8254, 486.288, 73.7683, 489.315, 78.945, 493.351, 81.5334, 613.409, 81.5334, 613.409, 264.277, 661.836, 322.251, 643.676, 390.842, 590.204, 411.549, 560.946, 352.017, -1.0089, 352.017, -1.0089, 0, 22.1957, 0, 21.1868, -40.1196, -14.1246, -2.58836, -28.2491, 164.361, -37.3292, 374.018, -5.04448, 383.077, 718.334, 446.492, 638.632, -31.0603, 364.212, -68.5915, 277.447, -111.3, 190.682, -104.829, 36.3203, -24.5894, 24.2135, -1.29418)
 
 [node name="cliffside_transition_point" type="Area2D" parent="."]
 
@@ -121,4 +121,11 @@ polygon = PackedVector2Array(29.258, -1.29418, 294.598, -1.29417, 292.58, -63.41
 position = Vector2(253, -59)
 shape = SubResource("RectangleShape2D_eyrdh")
 
+[node name="forest_transition_point" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="forest_transition_point"]
+position = Vector2(543, 238)
+polygon = PackedVector2Array(-54, 1, -1, 1, -1, -66, 46, -21, 28, 31, -25, 47)
+
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
+[connection signal="body_entered" from="forest_transition_point" to="." method="_on_forest_transition_point_body_entered"]

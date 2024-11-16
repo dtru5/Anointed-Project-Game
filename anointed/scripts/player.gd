@@ -105,9 +105,18 @@ func player():
 	pass
 	
 func current_camera():
+	# Set camera to be world camera 
 	if Global.current_scene == "world":
 		$world_camera.enabled = true
 		$cliff_side_camera.enabled = false
+		$forest_camera.enabled = false
+	# Set camera to be cliff side camera
 	elif Global.current_scene == "cliff_side":
 		$world_camera.enabled = false
 		$cliff_side_camera.enabled = true
+		$forest_camera.enabled = false
+	# Set camera to be forest camera
+	elif Global.current_scene == "forest":
+		$world_camera.enabled = false
+		$cliff_side_camera.enabled = false
+		$forest_camera.enabled = true
