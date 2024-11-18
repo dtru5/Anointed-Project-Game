@@ -165,5 +165,5 @@ animations = [{
 [node name="Skeleton" type="AnimatedSprite2D"]
 scale = Vector2(1.75179, 1.81386)
 sprite_frames = SubResource("SpriteFrames_m0nh3")
-animation = &"skeleton_hit"
+animation = &"skeleton_attack"
 script = ExtResource("2_g4s7u")

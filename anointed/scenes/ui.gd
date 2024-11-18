@@ -47,4 +47,10 @@ func _on_attack_pressed(extra_arg_0: int) -> void:
 		await get_tree().create_timer(0.5).timeout
 		$"../Enemy".get_child(0).hit(tempDic[extra_arg_0]["Damage"])
 		$"../Action".text = "Your " + str(Game.selectedMonsters[get_parent().selected]["Name"]) + " attacked for " + str(tempDic[0]["Damage"]) + " hp"
-		get_parent().MonsterTurn()
+		# Might have to change this part and change how battle is called from world in general
+		# TODO: Change how battle scene is called from player and move it to the main world script.
+		if $"../Enemy".get_child(0).Health > 0:
+			get_parent().MonsterTurn()
+		else:
+			await get_tree().create_timer(2).timeout
+			_on_flee_pressed()

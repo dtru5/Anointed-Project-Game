@@ -6,18 +6,18 @@ var monsterTest = preload("res://Monsters/skeleton.tscn")
 var selected = 0
 
 func _ready() -> void:
+		# Show enemy monster
+	var montemp = monsterTest.instantiate()
+	$Enemy.add_child(montemp)
+	montemp.flip_h = true
+	
 	$UI/Fight_Menu.hide()
 	$UI/Switch_Menu.hide()
 	$UI/Menu.hide()
 	$UI/Menu/GridContainer/Fight.grab_focus()
 	
 	# Wait a second to add a little more drama of loading into a battle.
-	await get_tree().create_timer(2).timeout
-	
-	# Show enemy monster
-	var montemp = monsterTest.instantiate()
-	montemp.flip_h = true
-	$Enemy.add_child(montemp)
+	await get_tree().create_timer(1.0).timeout
 	
 	# Show player monster
 	for i in Game.selectedMonsters:
@@ -39,4 +39,27 @@ func _on_attack_pressed(extra_arg_0: int) -> void:
 	pass # Replace with function body.
 	
 func MonsterTurn() -> void:
-	pass
+	$UI/Menu.hide()
+	$UI/Fight_Menu.hide()
+	$UI/Switch_Menu.hide()
+	
+	var damage = randi_range(10, 15)
+	
+	# Perhaps appear to wait
+	$Action.text = "Enemy is thinking.."
+	await get_tree().create_timer(1).timeout
+	
+	if $Enemy.get_child(0).Health <= 0:
+		Game.addExp(10)
+		get_tree().change_scene_to_file("res://scenes/world.tscn")
+		
+	$Enemy.get_child(0).attack()
+	$Player.get_child(selected).hit(damage)
+	
+	# TODO: Add a function that randomly chooses an attack out of the 3 choices and uses that for the print out for Action.text
+	$Action.text = "Enemy " + $Enemy.get_child(0).name + " attacked using SLASH for " + str(damage) + " hp"
+	Game.selectedMonsters[selected]["Health"] -= damage
+	await get_tree().create_timer(1).timeout
+	$UI/Menu/GridContainer/Fight.grab_focus()
+	$UI/Menu.show()
+	

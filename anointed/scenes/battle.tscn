@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0k3axoawhink"]
+[gd_scene load_steps=12 format=3 uid="uid://c0k3axoawhink"]
 
 [ext_resource type="Texture2D" uid="uid://p4ucst25xurc" path="res://art/scenery/mellow.png" id="1_7timm"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_pmc83"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="3_0p2y6"]
+[ext_resource type="Script" path="res://scripts/monster_ui.gd" id="3_iokm8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op3rd"]
 
@@ -35,6 +36,7 @@ offset_top = 8.0
 offset_right = 848.0
 offset_bottom = 8.0
 scale = Vector2(2.1, 2.1)
+script = ExtResource("3_iokm8")
 
 [node name="Info" type="Label" parent="MonsterUI"]
 layout_mode = 0
@@ -55,7 +57,7 @@ scale = Vector2(0.980952, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "10/10"
 
-[node name="ProgressBar" type="ProgressBar" parent="MonsterUI"]
+[node name="HPbar" type="ProgressBar" parent="MonsterUI"]
 layout_mode = 0
 offset_left = 52.5238
 offset_top = 142.476
