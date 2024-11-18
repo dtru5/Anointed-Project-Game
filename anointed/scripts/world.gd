@@ -22,6 +22,7 @@ func _ready() -> void:
 		$player.position.x = Global.player_exit_forest_posx
 		$player.position.y = Global.player_exit_forest_posy
 		Global.change_to_forest = false
+	print(Game.selectedMonsters)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

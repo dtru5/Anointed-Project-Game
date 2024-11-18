@@ -2,11 +2,11 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	addMonster("Skeleton")
 
 var dataBaseMonsters = {
 	0 : {
-		"Name" : "firstMonster",
+		"Name" : "Skeleton",
 		"Frame" : 0,
 		"Health" : 100,
 		"Level" : 1,
@@ -14,7 +14,7 @@ var dataBaseMonsters = {
 		"MaxExp" : 10,
 		"Strength" : 10,
 		"Defense" : 5,
-		"Scene" : preload("res://art/icon.svg"),
+		"Scene" : preload("res://Monsters/skeleton.tscn"),
 		"Attacks" : {
 			0 : {
 				"Name" : "Blast",

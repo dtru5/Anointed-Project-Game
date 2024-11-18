@@ -95,11 +95,8 @@ func play_animation(movement):
 func start_battle():
 	Global.player_first_fight_posx = global_position.x
 	Global.player_first_fight_posy = global_position.y
-	print(Global.player_first_fight_posx)
-	print(Global.player_first_fight_posy)
 	Global.game_exit_fight = true
-	print(Global.game_exit_fight)
-	get_tree().change_scene_to_file("res://scenes/battle_scene.tscn")  # Switch to battle scene
+	get_tree().change_scene_to_file("res://scenes/battle.tscn")  # Switch to battle scene
 	
 func player():
 	pass
