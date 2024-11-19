@@ -10,7 +10,7 @@ func _ready() -> void:
 	var montemp = monsterTest.instantiate()
 	$Enemy.add_child(montemp)
 	montemp.flip_h = true
-	
+	$UI/GainedXP.hide()
 	$UI/Fight_Menu.hide()
 	$UI/Switch_Menu.hide()
 	$UI/Menu.hide()
@@ -25,7 +25,7 @@ func _ready() -> void:
 		monTemp.name = Game.selectedMonsters[i]["Name"]
 		monTemp.hide()
 		$Player.add_child(monTemp)
-	$Player.get_child(0).show()
+	$Player.get_child(selected).show()
 	$UI/Menu.show()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,9 +33,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_capture_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_attack_pressed(extra_arg_0: int) -> void:
 	pass # Replace with function body.
 	
 func MonsterTurn() -> void:
@@ -50,7 +47,7 @@ func MonsterTurn() -> void:
 	await get_tree().create_timer(1).timeout
 	
 	if $Enemy.get_child(0).Health <= 0:
-		Game.addExp(10)
+		Game.addExp(100)
 		get_tree().change_scene_to_file("res://scenes/world.tscn")
 		
 	$Enemy.get_child(0).attack()
@@ -63,3 +60,9 @@ func MonsterTurn() -> void:
 	$UI/Menu/GridContainer/Fight.grab_focus()
 	$UI/Menu.show()
 	
+
+
+func _on_monster_pressed(extra_arg_0: int) -> void:
+	$Player.get_child(selected).hide()
+	selected = extra_arg_0
+	$Player.get_child(selected).show()

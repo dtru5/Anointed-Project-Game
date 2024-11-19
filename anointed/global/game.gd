@@ -3,6 +3,8 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	addMonster("Skeleton")
+	addMonster("Goblin")
+	addMonster("Mushroom")
 
 var dataBaseMonsters = {
 	0 : {
@@ -38,7 +40,7 @@ var dataBaseMonsters = {
 		}
 	},
 	1 : {
-		"Name" : "secondMonster",
+		"Name" : "Goblin",
 		"Frame" : 0,
 		"Health" : 100,
 		"Level" : 1,
@@ -46,7 +48,7 @@ var dataBaseMonsters = {
 		"MaxExp" : 10,
 		"Strength" : 10,
 		"Defense" : 5,
-		"Scene" : preload("res://art/icon.svg"),
+		"Scene" : preload("res://Monsters/goblin.tscn"),
 		"Attacks" : {
 			0 : {
 				"Name" : "Blast",
@@ -70,7 +72,7 @@ var dataBaseMonsters = {
 		}
 	},
 	2 : {
-		"Name" : "thirdMonster",
+		"Name" : "Mushroom",
 		"Frame" : 0,
 		"Health" : 100,
 		"Level" : 1,
@@ -78,7 +80,7 @@ var dataBaseMonsters = {
 		"MaxExp" : 10,
 		"Strength" : 10,
 		"Defense" : 5,
-		"Scene" : preload("res://art/icon.svg"),
+		"Scene" : preload("res://Monsters/mushroom.tscn"),
 		"Attacks" : {
 			0 : {
 				"Name" : "Blast",
