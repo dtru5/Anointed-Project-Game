@@ -19,7 +19,7 @@ func run_test() -> void:
 func hit(damage: int) -> void:
 	Health -= damage
 	play("skeleton_hit")
-	await wait(0.5)
+	await wait(0.8)
 	if Health <= 0:
 		play("skeleton_death")
 	else:
@@ -27,7 +27,7 @@ func hit(damage: int) -> void:
 		
 func attack() -> void:
 	play("skeleton_attack")
-	await wait(0.5)
+	await wait(0.9)
 	play("skeleton_idle")
 
 # Utility function to create a delay
