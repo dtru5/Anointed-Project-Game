@@ -16,9 +16,11 @@ func _on_body_entered(body: Node2D) -> void:
 		print("yes")
 		body.is_near_enemy = true
 		body.enemy_reference = self
-	
+		Game.selectedBoss = 0
+		$Label.show()
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "player":
 		body.is_near_enemy = false
 		body.enemy_reference = null
+		$Label.hide()

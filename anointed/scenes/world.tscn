@@ -108,6 +108,16 @@ position = Vector2(14, 42)
 [node name="test_enemy" parent="." instance=ExtResource("5_1kto7")]
 position = Vector2(145, 109)
 
+[node name="Label" type="Label" parent="test_enemy"]
+offset_left = -27.0
+offset_top = -23.0
+offset_right = 197.0
+offset_bottom = 5.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "press 'E' to enter battle"
+
 [node name="collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]

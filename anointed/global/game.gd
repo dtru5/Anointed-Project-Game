@@ -5,6 +5,9 @@ func _ready() -> void:
 	addMonster("Skeleton")
 	addMonster("Goblin")
 	addMonster("Mushroom")
+	
+	addBossMonster(firstBoss, "Skeleton")
+	addBossMonster(firstBoss, "Skeleton")
 
 var dataBaseMonsters = {
 	0 : {
@@ -108,6 +111,20 @@ var dataBaseMonsters = {
 var selectedMonsters = {
 	
 }
+
+var bosses = {0: firstBoss}
+
+var selectedBoss
+
+var firstBoss = {
+	
+}
+
+func addBossMonster(bossName, Name):
+	for i in dataBaseMonsters:
+		if dataBaseMonsters[i]["Name"] == Name:
+			var tempDic = dataBaseMonsters[i].duplicate(true)
+			bossName[bossName.size()] = tempDic
 
 func addMonster(Name):
 	for i in dataBaseMonsters:
