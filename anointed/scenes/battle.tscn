@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c0k3axoawhink"]
+[gd_scene load_steps=13 format=3 uid="uid://c0k3axoawhink"]
 
 [ext_resource type="Texture2D" uid="uid://p4ucst25xurc" path="res://art/scenery/mellow.png" id="1_7timm"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_pmc83"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="3_0p2y6"]
 [ext_resource type="Script" path="res://scripts/monster_ui.gd" id="3_iokm8"]
+[ext_resource type="PackedScene" uid="uid://cbk03deoutfb7" path="res://art/characters/playerBattle.tscn" id="5_pexnl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op3rd"]
 
@@ -242,10 +243,10 @@ alignment = 0
 [node name="Switch_Menu" type="HBoxContainer" parent="UI"]
 visible = false
 layout_mode = 0
-offset_left = 444.286
-offset_top = 20.4762
-offset_right = 581.286
-offset_bottom = 86.4762
+offset_left = 427.619
+offset_top = 19.0476
+offset_right = 601.619
+offset_bottom = 85.0476
 theme_override_constants/separation = 45
 
 [node name="GridContainer" type="GridContainer" parent="UI/Switch_Menu"]
@@ -259,6 +260,7 @@ layout_mode = 2
 focus_neighbor_right = NodePath("../Monster3")
 focus_neighbor_bottom = NodePath("../Monster2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -272,6 +274,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Monster1")
 focus_neighbor_bottom = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -285,6 +288,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Monster1")
 focus_neighbor_right = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -344,6 +348,10 @@ offset_right = 303.81
 offset_bottom = 94.9048
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "xp"
+
+[node name="PlayerBattle" parent="." instance=ExtResource("5_pexnl")]
+position = Vector2(71, 679)
+scale = Vector2(2.6875, 2.34375)
 
 [connection signal="pressed" from="UI/Menu/GridContainer/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Menu/GridContainer/Switch" to="UI" method="_on_switch_pressed"]

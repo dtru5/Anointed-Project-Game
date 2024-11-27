@@ -233,7 +233,7 @@ animations = [{
 
 [node name="Mushroom" type="AnimatedSprite2D"]
 position = Vector2(-1, -14)
-scale = Vector2(1.54667, 1.38)
+scale = Vector2(1.7, 1.516)
 sprite_frames = SubResource("SpriteFrames_6pc63")
 animation = &"mushroom_attack"
 frame = 5
