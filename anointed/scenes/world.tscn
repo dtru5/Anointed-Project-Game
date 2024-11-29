@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyod4buaua7nq"]
+[gd_scene load_steps=14 format=3 uid="uid://dyod4buaua7nq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_5qeek"]
 [ext_resource type="Texture2D" uid="uid://boegx42mdewf5" path="res://art/tilesets/plains.png" id="1_ibapa"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://uy5qrmn7fghq" path="res://art/objects/objects.png" id="3_vrn1i"]
 [ext_resource type="PackedScene" uid="uid://b1jy4vunhbu6e" path="res://scenes/player.tscn" id="4_1x7gx"]
 [ext_resource type="PackedScene" uid="uid://3ywyx1l156w7" path="res://scenes/test_enemy.tscn" id="5_1kto7"]
+[ext_resource type="Script" path="res://scripts/path_follow_2d_world.gd" id="6_q6jdv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xunw5"]
 texture = ExtResource("1_ibapa")
@@ -84,6 +85,12 @@ sources/2 = SubResource("TileSetAtlasSource_sqber")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyrdh"]
 size = Vector2(59, 49)
 
+[sub_resource type="Curve2D" id="Curve2D_3xtio"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 143, -31, 0, 0, 0, 0, 147, 190, 0, 0, 0, 0, 148, 236, 0, 0, 0, 0, 150, 237, 0, 0, 0, 0, 158, 237, 0, 0, 0, 0, 160, 235, 0, 0, 0, 0, 153, -31, 0, 0, 0, 0, 143, -31)
+}
+point_count = 8
+
 [node name="world" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_5qeek")
@@ -105,19 +112,6 @@ layer_2/tile_data = PackedInt32Array(131077, 655362, 7, 458780, 655362, 7, 58984
 [node name="player" parent="." instance=ExtResource("4_1x7gx")]
 position = Vector2(14, 42)
 
-[node name="test_enemy" parent="." instance=ExtResource("5_1kto7")]
-position = Vector2(145, 109)
-
-[node name="Label" type="Label" parent="test_enemy"]
-offset_left = -27.0
-offset_top = -23.0
-offset_right = 197.0
-offset_bottom = 5.0
-scale = Vector2(0.25, 0.25)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
-text = "press 'E' to enter battle"
-
 [node name="collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
@@ -136,6 +130,29 @@ shape = SubResource("RectangleShape2D_eyrdh")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="forest_transition_point"]
 position = Vector2(543, 238)
 polygon = PackedVector2Array(-54, 1, -1, 1, -1, -66, 46, -21, 28, 31, -25, 47)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_3xtio")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(143, -31)
+rotation = 1.5527
+rotates = false
+script = ExtResource("6_q6jdv")
+
+[node name="test_enemy" parent="Path2D/PathFollow2D" instance=ExtResource("5_1kto7")]
+position = Vector2(-3.9986, -0.105232)
+rotation = -1.5527
+
+[node name="Label" type="Label" parent="Path2D/PathFollow2D/test_enemy"]
+offset_left = -27.0
+offset_top = -23.0
+offset_right = 197.0
+offset_bottom = 5.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "press 'E' to enter battle"
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_entered" from="forest_transition_point" to="." method="_on_forest_transition_point_body_entered"]

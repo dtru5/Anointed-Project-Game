@@ -4,7 +4,7 @@ extends Node2D
 # Also checks to see where player is coming from (i.e. exiting a fight, exit cliffside)
 func _ready() -> void:
 	print(Global.current_scene)
-	$test_enemy/Label.hide()
+	$Path2D/PathFollow2D/test_enemy/Label.hide()
 	if Global.game_first_loadin == true and Global.game_exit_fight == false:
 		$player.position.x = Global.player_start_posx
 		$player.position.y = Global.player_start_posy
