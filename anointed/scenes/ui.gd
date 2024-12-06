@@ -74,11 +74,12 @@ func _on_attack_pressed(extra_arg_0: int) -> void:
 		var tempDic = Game.selectedMonsters[get_parent().selected]["Attacks"]
 		# Added: Play attack animation (might have to wait so the attack regs and then the hit animation plays.
 		$"../Player".get_child(get_parent().selected).attack()
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(2.4).timeout
 		$"../Enemy".get_child(0).hit(tempDic[extra_arg_0]["Damage"])
 		$"../Action".text = "Your " + str(Game.selectedMonsters[get_parent().selected]["Name"]) + " attacked for " + str(tempDic[0]["Damage"]) + " hp"
 		# Might have to change this part and change how battle is called from world in general
 		# TODO: Change how battle scene is called from player and move it to the main world script.
+		await get_tree().create_timer(2.0).timeout
 		if $"../Enemy".get_child(0).Health > 0:
 			get_parent().MonsterTurn()
 		else:

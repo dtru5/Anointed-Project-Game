@@ -170,7 +170,7 @@ animations = [{
 }]
 
 [node name="Goblin" type="AnimatedSprite2D"]
-position = Vector2(3, -21)
+position = Vector2(3, -2)
 scale = Vector2(1.88, 1.67333)
 sprite_frames = SubResource("SpriteFrames_iti1v")
 animation = &"goblin_idle"

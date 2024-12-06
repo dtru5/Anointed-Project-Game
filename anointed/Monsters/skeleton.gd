@@ -26,10 +26,17 @@ func hit(damage: int) -> void:
 		play("skeleton_idle")
 		
 func attack() -> void:
+	play("skeleton_walk")
+	$AnimationPlayer.play("walk")
+	await wait(2.0)
 	play("skeleton_attack")
 	await wait(0.9)
+	play("skeleton_walk")
+	$AnimationPlayer.play("walk_back")
+	await wait(2.0)
 	play("skeleton_idle")
 
+	
 # Utility function to create a delay
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
