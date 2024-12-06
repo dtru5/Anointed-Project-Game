@@ -135,8 +135,9 @@ polygon = PackedVector2Array(-54, 1, -1, 1, -1, -66, 46, -21, 28, 31, -25, 47)
 curve = SubResource("Curve2D_3xtio")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(143, -31)
+position = Vector2(143.635, 4.081)
 rotation = 1.5527
+progress = 35.0965
 rotates = false
 script = ExtResource("6_q6jdv")
 

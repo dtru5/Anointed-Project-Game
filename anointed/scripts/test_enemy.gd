@@ -18,8 +18,13 @@ func _on_body_entered(body: Node2D) -> void:
 		#body.enemy_reference = self
 		#Game.selectedBoss = 0
 		#$Label.show()
-		Global.player_first_fight_posx = global_position.x
-		Global.player_first_fight_posy = global_position.y
+		if body.global_position.x >= 130 and body.global_position.x <= 150:
+			Global.player_first_fight_posx = body.global_position.x - 20
+		elif body.global_position.x > 150 and body.global_position.x <= 170:
+			Global.player_first_fight_posx = body.global_position.x + 20
+		else:
+			Global.player_first_fight_posx = body.global_position.x
+		Global.player_first_fight_posy = body.global_position.y
 		Global.game_exit_fight = true
 		get_tree().change_scene_to_file("res://scenes/battle.tscn")  # Switch to battle scene
 
