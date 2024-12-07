@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0k3axoawhink"]
+[gd_scene load_steps=22 format=3 uid="uid://c0k3axoawhink"]
 
 [ext_resource type="Texture2D" uid="uid://p4ucst25xurc" path="res://art/scenery/mellow.png" id="1_7timm"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_pmc83"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="3_0p2y6"]
 [ext_resource type="Script" path="res://scripts/monster_ui.gd" id="3_iokm8"]
 [ext_resource type="PackedScene" uid="uid://cbk03deoutfb7" path="res://art/characters/playerBattle.tscn" id="5_pexnl"]
+[ext_resource type="Texture2D" uid="uid://biv6keaugfrg8" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/IDLE.png" id="6_tb3mx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op3rd"]
 
@@ -20,6 +21,63 @@ bg_color = Color(0.0563787, 0.929509, 0.214018, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c0bkw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l3jge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jeuwd"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbjxv"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrsfo"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_76ujw"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp8wn"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd2li"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(480, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tayg"]
+atlas = ExtResource("6_tb3mx")
+region = Rect2(576, 0, 96, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7psn8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jeuwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbjxv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrsfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_76ujw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp8wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd2li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tayg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
 
 [node name="Battle" type="CanvasLayer"]
 script = ExtResource("1_pmc83")
@@ -70,10 +128,10 @@ value = 50.0
 show_percentage = false
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(288, 661)
+position = Vector2(388, 661)
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(997, 663)
+position = Vector2(900, 663)
 
 [node name="GameOver" type="Label" parent="."]
 offset_left = 301.0
@@ -350,8 +408,11 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "xp"
 
 [node name="PlayerBattle" parent="." instance=ExtResource("5_pexnl")]
-position = Vector2(71, 679)
-scale = Vector2(2.6875, 2.34375)
+position = Vector2(81, 658)
+scale = Vector2(2.34375, 2.34375)
+sprite_frames = SubResource("SpriteFrames_7psn8")
+frame = 0
+frame_progress = 0.0
 
 [connection signal="pressed" from="UI/Menu/GridContainer/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Menu/GridContainer/Switch" to="UI" method="_on_switch_pressed"]

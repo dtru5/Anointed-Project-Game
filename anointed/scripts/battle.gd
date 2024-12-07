@@ -57,8 +57,8 @@ func MonsterTurn() -> void:
 		Game.addExp(100)
 		get_tree().change_scene_to_file("res://scenes/world.tscn")
 		
-	$Enemy.get_child(0).attack()
-	await get_tree().create_timer(0.2).timeout
+	$Enemy.get_child(0).attack_back()
+	await get_tree().create_timer(2.4).timeout
 	$Player.get_child(selected).hit(damage)
 	
 	# TODO: Add a function that randomly chooses an attack out of the 3 choices and uses that for the print out for Action.text
