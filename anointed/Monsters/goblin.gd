@@ -18,6 +18,7 @@ func run_test() -> void:
 # Function to apply damage and handle animations
 func hit(damage: int) -> void:
 	Health -= damage
+	await wait(0.7)
 	play("goblin_hit")
 	await wait(0.5)
 	if Health <= 0:
@@ -26,8 +27,25 @@ func hit(damage: int) -> void:
 		play("goblin_idle")
 		
 func attack() -> void:
+	play("goblin_run")
+	$AnimationPlayer.play("walk")
+	await wait(1.0)
 	play("goblin_attack")
-	await wait(0.5)
+	await wait(0.9)
+	play("goblin_run")
+	$AnimationPlayer.play("walk_back")
+	await wait(1.0)
+	play("goblin_idle")
+	
+func attack_back() -> void:
+	play("goblin_run")
+	$AnimationPlayer.play("monster_walk")
+	await wait(1.0)
+	play("goblin_attack")
+	await wait(0.9)
+	play("goblin_run")
+	$AnimationPlayer.play("monster_walk_back")
+	await wait(1.0)
 	play("goblin_idle")
 
 # Utility function to create a delay

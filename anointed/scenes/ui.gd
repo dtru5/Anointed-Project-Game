@@ -5,10 +5,29 @@ func _process(delta: float) -> void:
 	# Show the health of the selected monster.
 	var deadMonsters = 0
 	var health = Game.selectedMonsters[get_parent().selected]["Health"]
+	var maxHealth = Game.selectedMonsters[get_parent().selected]["MaxHealth"]
 	if health > 0:
 		$HPbar.value = health
 		$HpText.text = str(health)
 		$Menu/GridContainer/Fight.disabled = false
+		if Input.is_action_just_pressed("heal") and (Game.healthPotions > 0):
+			if health == maxHealth:
+				$"../Action".text = "You monster is already max health."
+				$"../Action".show()
+			else:
+				if (health + 30) > maxHealth:
+					Game.selectedMonsters[get_parent().selected]["Health"] = maxHealth
+					$"../Player".get_child(get_parent().selected).Health = maxHealth
+				else:
+					Game.selectedMonsters[get_parent().selected]["Health"] += 30
+					$"../Player".get_child(get_parent().selected).Health += 30
+				Game.healthPotions -= 1
+				$"../HealthPotionRemaining".text = "x" + str(Game.healthPotions)
+				$"../HealthPotionRemaining".show()
+		elif Input.is_action_just_pressed("heal") and (Game.healthPotions <= 0):
+			$"../Action".text = "You are out of health postions."
+			$"../Action".show()
+				
 	elif health <= 0 and get_parent().first_time_enter_fight == false:
 		# Prompt the player to switch monsters
 		$"../Action".text = "Your monster is out of health! Please switch to another."
@@ -73,13 +92,12 @@ func _on_attack_pressed(extra_arg_0: int) -> void:
 	if Game.selectedMonsters[get_parent().selected]["Attacks"][extra_arg_0]["Target"] == "Monster":
 		var tempDic = Game.selectedMonsters[get_parent().selected]["Attacks"]
 		# Added: Play attack animation (might have to wait so the attack regs and then the hit animation plays.
-		$"../Player".get_child(get_parent().selected).attack()
-		await get_tree().create_timer(2.4).timeout
-		$"../Enemy".get_child(0).hit(tempDic[extra_arg_0]["Damage"])
 		$"../Action".text = "Your " + str(Game.selectedMonsters[get_parent().selected]["Name"]) + " attacked for " + str(tempDic[0]["Damage"]) + " hp"
+		$"../Player".get_child(get_parent().selected).attack()
+		await get_tree().create_timer(1.0).timeout
+		$"../Enemy".get_child(0).hit(tempDic[extra_arg_0]["Damage"])
 		# Might have to change this part and change how battle is called from world in general
 		# TODO: Change how battle scene is called from player and move it to the main world script.
-		await get_tree().create_timer(2.0).timeout
 		if $"../Enemy".get_child(0).Health > 0:
 			get_parent().MonsterTurn()
 		else:

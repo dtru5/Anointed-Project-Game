@@ -18,6 +18,8 @@ func _ready() -> void:
 	$UI/Fight_Menu.hide()
 	$UI/Switch_Menu.hide()
 	$UI/Menu.hide()
+	$HealthPotionRemaining.text = "x" + str(Game.healthPotions)
+	$HealthPotionRemaining.show()
 	$UI/Menu/GridContainer/Fight.grab_focus()
 	
 	# Wait a second to add a little more drama of loading into a battle.
@@ -50,18 +52,20 @@ func MonsterTurn() -> void:
 	var damage = randi_range(50, 100)
 	
 	# Perhaps appear to wait
+	await get_tree().create_timer(1.5).timeout
 	$Action.text = "Enemy is thinking.."
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(2.0).timeout
 	
 	if $Enemy.get_child(0).Health <= 0:
 		Game.addExp(100)
 		get_tree().change_scene_to_file("res://scenes/world.tscn")
 		
 	$Enemy.get_child(0).attack_back()
-	await get_tree().create_timer(2.4).timeout
+	await get_tree().create_timer(1.0).timeout
 	$Player.get_child(selected).hit(damage)
 	
 	# TODO: Add a function that randomly chooses an attack out of the 3 choices and uses that for the print out for Action.text
+	await get_tree().create_timer(1.5).timeout
 	$Action.text = "Enemy " + $Enemy.get_child(0).name + " attacked using SLASH for " + str(damage) + " hp"
 	Game.selectedMonsters[selected]["Health"] -= damage
 	await get_tree().create_timer(1).timeout

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c0k3axoawhink"]
+[gd_scene load_steps=29 format=3 uid="uid://c0k3axoawhink"]
 
 [ext_resource type="Texture2D" uid="uid://p4ucst25xurc" path="res://art/scenery/mellow.png" id="1_7timm"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_pmc83"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://scripts/monster_ui.gd" id="3_iokm8"]
 [ext_resource type="PackedScene" uid="uid://cbk03deoutfb7" path="res://art/characters/playerBattle.tscn" id="5_pexnl"]
 [ext_resource type="Texture2D" uid="uid://biv6keaugfrg8" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/IDLE.png" id="6_tb3mx"]
+[ext_resource type="Texture2D" uid="uid://bi5ly62dnv4r" path="res://art/Health Potion/Health Potion 1.png" id="7_wg7al"]
+[ext_resource type="Texture2D" uid="uid://dxl8wm3iiluw7" path="res://art/Health Potion/Health Potion 2.png" id="8_tp4ya"]
+[ext_resource type="Texture2D" uid="uid://c6stf4u2ukxnq" path="res://art/Health Potion/Health Potion 3.png" id="9_74ygi"]
+[ext_resource type="Texture2D" uid="uid://cnf3cte1j48ws" path="res://art/Health Potion/Health Potion 4.png" id="10_n5fyv"]
+[ext_resource type="Texture2D" uid="uid://b32mqtrvxasjk" path="res://art/Health Potion/Health Potion 5.png" id="11_2wbmx"]
+[ext_resource type="Texture2D" uid="uid://cd7mws6f3o32f" path="res://art/Health Potion/Health Potion 6.png" id="12_fd6l8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op3rd"]
 
@@ -79,6 +85,32 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_o17a1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_wg7al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tp4ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_74ygi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_n5fyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2wbmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_fd6l8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="Battle" type="CanvasLayer"]
 script = ExtResource("1_pmc83")
 
@@ -149,10 +181,10 @@ theme_override_font_sizes/font_size = 128
 text = "GAME OVER"
 
 [node name="Action" type="Label" parent="."]
-offset_left = 119.0
-offset_top = 338.0
-offset_right = 367.0
-offset_bottom = 365.0
+offset_left = 134.0
+offset_top = 360.0
+offset_right = 382.0
+offset_bottom = 387.0
 scale = Vector2(0.980952, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "This is an action."
@@ -233,10 +265,10 @@ alignment = 0
 [node name="Fight_Menu" type="HBoxContainer" parent="UI"]
 visible = false
 layout_mode = 0
-offset_left = 444.286
-offset_top = 20.4762
-offset_right = 581.286
-offset_bottom = 86.4762
+offset_left = 428.571
+offset_top = 25.2381
+offset_right = 565.571
+offset_bottom = 91.2381
 theme_override_constants/separation = 45
 
 [node name="GridContainer" type="GridContainer" parent="UI/Fight_Menu"]
@@ -250,6 +282,7 @@ layout_mode = 2
 focus_neighbor_right = NodePath("../Attack3")
 focus_neighbor_bottom = NodePath("../Attack2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -264,6 +297,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Attack1")
 focus_neighbor_bottom = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -277,6 +311,7 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Attack1")
 focus_neighbor_right = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -290,6 +325,7 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Attack2")
 focus_neighbor_top = NodePath("../Attack3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 13
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -370,29 +406,29 @@ alignment = 0
 
 [node name="Info" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 53.8095
-offset_top = 96.6667
-offset_right = 167.81
-offset_bottom = 119.667
+offset_left = 65.5714
+offset_top = 109.524
+offset_right = 179.572
+offset_bottom = 132.524
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Monster1 lvl: 1"
 
 [node name="HpText" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 52.8571
-offset_top = 119.048
-offset_right = 95.8571
-offset_bottom = 142.048
+offset_left = 64.619
+offset_top = 131.905
+offset_right = 107.619
+offset_bottom = 154.905
 scale = Vector2(0.980952, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "10/10"
 
 [node name="HPbar" type="ProgressBar" parent="UI"]
 layout_mode = 0
-offset_left = 52.5238
-offset_top = 142.476
-offset_right = 163.524
-offset_bottom = 156.476
+offset_left = 64.2857
+offset_top = 155.333
+offset_right = 175.286
+offset_bottom = 169.333
 theme_override_styles/background = SubResource("StyleBoxEmpty_op3rd")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4uyom")
 value = 50.0
@@ -413,6 +449,28 @@ scale = Vector2(2.34375, 2.34375)
 sprite_frames = SubResource("SpriteFrames_7psn8")
 frame = 0
 frame_progress = 0.0
+
+[node name="HealthPotion" type="AnimatedSprite2D" parent="."]
+position = Vector2(65, 313)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_o17a1")
+frame_progress = 0.567906
+
+[node name="HealthPotionRemaining" type="Label" parent="."]
+offset_left = 53.0
+offset_top = 370.0
+offset_right = 108.0
+offset_bottom = 399.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "x0"
+
+[node name="Press_H_Noti" type="Label" parent="."]
+offset_left = 8.0
+offset_top = 234.0
+offset_right = 126.0
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Press 'H' to use"
 
 [connection signal="pressed" from="UI/Menu/GridContainer/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Menu/GridContainer/Switch" to="UI" method="_on_switch_pressed"]

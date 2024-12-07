@@ -18,6 +18,7 @@ func run_test() -> void:
 # Function to apply damage and handle animations
 func hit(damage: int) -> void:
 	Health -= damage
+	await wait(0.7)
 	play("skeleton_hit")
 	await wait(0.8)
 	if Health <= 0:
@@ -28,23 +29,23 @@ func hit(damage: int) -> void:
 func attack() -> void:
 	play("skeleton_walk")
 	$AnimationPlayer.play("walk")
-	await wait(2.0)
+	await wait(1.0)
 	play("skeleton_attack")
 	await wait(0.9)
 	play("skeleton_walk")
 	$AnimationPlayer.play("walk_back")
-	await wait(2.0)
+	await wait(1.0)
 	play("skeleton_idle")
 	
 func attack_back() -> void:
 	play("skeleton_walk")
 	$AnimationPlayer.play("monster_walk")
-	await wait(2.0)
+	await wait(1.0)
 	play("skeleton_attack")
 	await wait(0.9)
 	play("skeleton_walk")
 	$AnimationPlayer.play("monster_walk_back")
-	await wait(2.0)
+	await wait(1.0)
 	play("skeleton_idle")
 
 	

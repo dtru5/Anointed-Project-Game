@@ -8,12 +8,15 @@ func _ready() -> void:
 	
 	addBossMonster(firstBoss, "Skeleton")
 	addBossMonster(firstBoss, "Skeleton")
+	
+	healthPotions = 3
 
 var dataBaseMonsters = {
 	0 : {
 		"Name" : "Skeleton",
 		"Frame" : 0,
 		"Health" : 100,
+		"MaxHealth" : 100,
 		"Level" : 1,
 		"Exp" : 0,
 		"MaxExp" : 10,
@@ -22,19 +25,19 @@ var dataBaseMonsters = {
 		"Scene" : preload("res://Monsters/skeleton.tscn"),
 		"Attacks" : {
 			0 : {
-				"Name" : "Blast",
+				"Name" : "Bone Bash",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
 			},
 			1 : {
-				"Name" : "Slash",
+				"Name" : "Rattle Stab",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
 			},
 			2 : {
-				"Name" : "Cast",
+				"Name" : "Grave Slash",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
@@ -46,6 +49,7 @@ var dataBaseMonsters = {
 		"Name" : "Goblin",
 		"Frame" : 0,
 		"Health" : 100,
+		"MaxHealth" : 100,
 		"Level" : 1,
 		"Exp" : 0,
 		"MaxExp" : 10,
@@ -54,19 +58,19 @@ var dataBaseMonsters = {
 		"Scene" : preload("res://Monsters/goblin.tscn"),
 		"Attacks" : {
 			0 : {
-				"Name" : "Blast",
+				"Name" : "Dagger Jab",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
 			},
 			1 : {
-				"Name" : "Slash",
+				"Name" : "Theif Slash",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
 			},
 			2 : {
-				"Name" : "Cast",
+				"Name" : "Bleeding Poke",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
@@ -78,6 +82,7 @@ var dataBaseMonsters = {
 		"Name" : "Mushroom",
 		"Frame" : 0,
 		"Health" : 100,
+		"MaxHealth" : 100,
 		"Level" : 1,
 		"Exp" : 0,
 		"MaxExp" : 10,
@@ -86,19 +91,19 @@ var dataBaseMonsters = {
 		"Scene" : preload("res://Monsters/mushroom.tscn"),
 		"Attacks" : {
 			0 : {
-				"Name" : "Blast",
+				"Name" : "Spore Slam",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
 			},
 			1 : {
-				"Name" : "Slash",
+				"Name" : "Cap Crush",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
 			},
 			2 : {
-				"Name" : "Cast",
+				"Name" : "Zombie",
 				"Target" : "Monster",
 				"Damage" : 10,
 				"cost" : 2
@@ -119,6 +124,8 @@ var selectedBoss
 var firstBoss = {
 	
 }
+
+var healthPotions
 
 func addBossMonster(bossName, Name):
 	for i in dataBaseMonsters:
