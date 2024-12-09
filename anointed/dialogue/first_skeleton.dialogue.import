@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cfttpd054d1wy"
+path="res://.godot/imported/first_skeleton.dialogue-cbde7d520ed11f331f6bfb223cbbba24.tres"
+
+[deps]
+
+source_file="res://dialogue/first_skeleton.dialogue"
+dest_files=["res://.godot/imported/first_skeleton.dialogue-cbde7d520ed11f331f6bfb223cbbba24.tres"]
+
+[params]
+
+defaults=true

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dblp84pavcmhw"
+path="res://.godot/imported/Rock Meteor Swarm 2.wav-3eda381da4594f027e968b0f98d34735.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Spells/Rock Meteor Swarm 2.wav"
+dest_files=["res://.godot/imported/Rock Meteor Swarm 2.wav-3eda381da4594f027e968b0f98d34735.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

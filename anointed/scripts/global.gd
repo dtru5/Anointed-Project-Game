@@ -19,6 +19,15 @@ var player_start_posy = 42
 var player_first_fight_posx
 var player_first_fight_posy
 
+var player_mushroom_fight_posx
+var player_mushroom_fight_posy
+
+var player_goblin_fight_posx
+var player_goblin_fight_posy
+
+var player_final_boss_fight_posx
+var player_final_boss_fight_posy
+
 var player_monsters: Array = []
 
 var game_first_loadin = true
@@ -27,6 +36,17 @@ var game_exit_fight = false
 # Variables to tell what scene we are transitioning to
 var change_to_cliffside = false
 var change_to_forest = false
+
+# For enemy on world scenes to be deleted
+var first_enemy_defeated = false
+var mushroom_defeated = false
+var goblin_defeated = false
+var final_boss_defeated = false
+
+# For dialogue ended in beginning_world
+var dialogue_skeleton_ended = false
+
+var can_move = true
 
 func finish_changeScene():
 	if transition_scene == true:

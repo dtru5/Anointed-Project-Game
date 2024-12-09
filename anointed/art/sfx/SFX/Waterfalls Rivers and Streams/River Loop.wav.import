@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vobijaau5ade"
+path="res://.godot/imported/River Loop.wav-66fe96e6d923eff79ee78ec2b5f3178e.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Waterfalls Rivers and Streams/River Loop.wav"
+dest_files=["res://.godot/imported/River Loop.wav-66fe96e6d923eff79ee78ec2b5f3178e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

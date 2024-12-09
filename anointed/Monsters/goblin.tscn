@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://8pjl4d626e2o"]
+[gd_scene load_steps=43 format=3 uid="uid://8pjl4d626e2o"]
 
 [ext_resource type="Texture2D" uid="uid://dnfsby4uvl6nd" path="res://art/Monsters_Creatures_Fantasy/Goblin/Attack.png" id="1_dyaw7"]
 [ext_resource type="Texture2D" uid="uid://b3h3e6peg3j8v" path="res://art/Monsters_Creatures_Fantasy/Goblin/Death.png" id="2_c58ww"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://3yrs7aqs67pu" path="res://art/Monsters_Creatures_Fantasy/Goblin/Idle.png" id="4_vs7h0"]
 [ext_resource type="Texture2D" uid="uid://84kifh5q253r" path="res://art/Monsters_Creatures_Fantasy/Goblin/Run.png" id="5_aoxm8"]
 [ext_resource type="Script" path="res://Monsters/goblin.gd" id="5_tj28q"]
+[ext_resource type="AudioStream" uid="uid://bl03kagowqgqa" path="res://art/sfx/SFX/Attacks/Sword Attacks Hits and Blocks/Sword Attack 2.wav" id="7_6f7fb"]
+[ext_resource type="AudioStream" uid="uid://1wmb71pyl270" path="res://art/sfx/SFX/Footsteps/Dirt/Dirt Walk 3.wav" id="8_wmufh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yh0aj"]
 atlas = ExtResource("1_dyaw7")
@@ -378,3 +380,11 @@ script = ExtResource("5_tj28q")
 libraries = {
 "": SubResource("AnimationLibrary_8s1vx")
 }
+
+[node name="sfx_goblin_sword" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6f7fb")
+volume_db = -10.895
+
+[node name="sfx_goblin_run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_wmufh")
+volume_db = -17.829

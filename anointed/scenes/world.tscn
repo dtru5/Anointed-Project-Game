@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dyod4buaua7nq"]
+[gd_scene load_steps=16 format=3 uid="uid://dyod4buaua7nq"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_5qeek"]
 [ext_resource type="Texture2D" uid="uid://boegx42mdewf5" path="res://art/tilesets/plains.png" id="1_ibapa"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b1jy4vunhbu6e" path="res://scenes/player.tscn" id="4_1x7gx"]
 [ext_resource type="PackedScene" uid="uid://3ywyx1l156w7" path="res://scenes/test_enemy.tscn" id="5_1kto7"]
 [ext_resource type="Script" path="res://scripts/path_follow_2d_world.gd" id="6_q6jdv"]
+[ext_resource type="PackedScene" uid="uid://c2i7qd20oiaip" path="res://Monsters/mushroom.tscn" id="8_am6nf"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xunw5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b137r"]
 texture = ExtResource("1_ibapa")
 2:1/0 = 0
 1:0/0 = 0
@@ -40,11 +41,11 @@ texture = ExtResource("1_ibapa")
 4:6/0 = 0
 5:6/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_occhl"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5f66o"]
 texture = ExtResource("2_s052w")
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqber"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eon78"]
 texture = ExtResource("3_vrn1i")
 0:5/size_in_atlas = Vector2i(3, 4)
 0:5/0 = 0
@@ -78,9 +79,9 @@ texture = ExtResource("3_vrn1i")
 
 [sub_resource type="TileSet" id="TileSet_juwlk"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_xunw5")
-sources/1 = SubResource("TileSetAtlasSource_occhl")
-sources/2 = SubResource("TileSetAtlasSource_sqber")
+sources/0 = SubResource("TileSetAtlasSource_b137r")
+sources/1 = SubResource("TileSetAtlasSource_5f66o")
+sources/2 = SubResource("TileSetAtlasSource_eon78")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eyrdh"]
 size = Vector2(59, 49)
@@ -90,6 +91,9 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 143, -31, 0, 0, 0, 0, 147, 190, 0, 0, 0, 0, 148, 236, 0, 0, 0, 0, 150, 237, 0, 0, 0, 0, 158, 237, 0, 0, 0, 0, 160, 235, 0, 0, 0, 0, 153, -31, 0, 0, 0, 0, 143, -31)
 }
 point_count = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_schfs"]
+size = Vector2(21, 212)
 
 [node name="world" type="Node2D"]
 y_sort_enabled = true
@@ -146,6 +150,7 @@ position = Vector2(-3.9986, -0.105232)
 rotation = -1.5527
 
 [node name="Label" type="Label" parent="Path2D/PathFollow2D/test_enemy"]
+visible = false
 offset_left = -27.0
 offset_top = -23.0
 offset_right = 197.0
@@ -155,5 +160,16 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "press 'E' to enter battle"
 
+[node name="Mushroom" parent="." instance=ExtResource("8_am6nf")]
+scale = Vector2(0.423334, 0.311333)
+
+[node name="Mushroom_Fight" type="Area2D" parent="."]
+position = Vector2(453, 108)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mushroom_Fight"]
+position = Vector2(2.5, 26)
+shape = SubResource("RectangleShape2D_schfs")
+
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_entered" from="forest_transition_point" to="." method="_on_forest_transition_point_body_entered"]
+[connection signal="body_entered" from="Mushroom_Fight" to="." method="_on_mushroom_fight_body_entered"]

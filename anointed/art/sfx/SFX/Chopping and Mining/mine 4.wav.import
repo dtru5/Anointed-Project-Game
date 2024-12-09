@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4vvl7o3yoxg"
+path="res://.godot/imported/mine 4.wav-d82c5f712a6ab9d4e08d3b10a277528c.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Chopping and Mining/mine 4.wav"
+dest_files=["res://.godot/imported/mine 4.wav-d82c5f712a6ab9d4e08d3b10a277528c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

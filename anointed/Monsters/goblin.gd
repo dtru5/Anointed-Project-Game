@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 
+@onready var sfx_goblin_sword: AudioStreamPlayer2D = $sfx_goblin_sword
+@onready var sfx_goblin_run: AudioStreamPlayer2D = $sfx_goblin_run
+
 var Health = 20
 var level = 1
 
@@ -29,23 +32,35 @@ func hit(damage: int) -> void:
 func attack() -> void:
 	play("goblin_run")
 	$AnimationPlayer.play("walk")
+	sfx_goblin_run.play()
 	await wait(1.0)
+	sfx_goblin_run.stop()
 	play("goblin_attack")
-	await wait(0.9)
+	await wait(0.6)
+	sfx_goblin_sword.play()
+	await wait(0.3)
 	play("goblin_run")
 	$AnimationPlayer.play("walk_back")
+	sfx_goblin_run.play()
 	await wait(1.0)
+	sfx_goblin_run.stop()
 	play("goblin_idle")
 	
 func attack_back() -> void:
 	play("goblin_run")
 	$AnimationPlayer.play("monster_walk")
+	sfx_goblin_run.play()
 	await wait(1.0)
+	sfx_goblin_run.stop()
 	play("goblin_attack")
-	await wait(0.9)
+	await wait(0.6)
+	sfx_goblin_sword.play()
+	await wait(0.3)
 	play("goblin_run")
 	$AnimationPlayer.play("monster_walk_back")
+	sfx_goblin_run.play()
 	await wait(1.0)
+	sfx_goblin_run.stop()
 	play("goblin_idle")
 
 # Utility function to create a delay

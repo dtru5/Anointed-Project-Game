@@ -1,0 +1,11 @@
+~ start
+Grandpa: Hello, grandson.
+- Hey, Grandpa...
+- Quiet, old man. I'm out of here 
+	set Global.can_move = true 
+	=> END
+Grandpa: I know it's very weird that I look just like you but with white hair and a beard...
+Grandpa: Anyways... you're about to embark on a short but dangerous journey.
+Grandpa: Here, take this with you.
+set Global.can_move = true
+=> END

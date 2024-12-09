@@ -1,5 +1,9 @@
 extends AnimatedSprite2D
 
+@onready var sword_swing: AudioStreamPlayer2D = $sword_swing
+@onready var sfx_skeleton_hit: AudioStreamPlayer2D = $sfx_skeleton_hit
+@onready var sfx_skeleton_run: AudioStreamPlayer2D = $sfx_skeleton_run
+
 var Health = 20
 var level = 1
 
@@ -20,6 +24,7 @@ func hit(damage: int) -> void:
 	Health -= damage
 	await wait(0.7)
 	play("skeleton_hit")
+	sfx_skeleton_hit.play()
 	await wait(0.8)
 	if Health <= 0:
 		play("skeleton_death")
@@ -29,23 +34,35 @@ func hit(damage: int) -> void:
 func attack() -> void:
 	play("skeleton_walk")
 	$AnimationPlayer.play("walk")
+	sfx_skeleton_run.play()
 	await wait(1.0)
+	sfx_skeleton_run.stop()
 	play("skeleton_attack")
-	await wait(0.9)
+	await wait(0.5)
+	sword_swing.play()
+	await wait(0.4)
 	play("skeleton_walk")
 	$AnimationPlayer.play("walk_back")
+	sfx_skeleton_run.play()
 	await wait(1.0)
+	sfx_skeleton_run.stop()
 	play("skeleton_idle")
 	
 func attack_back() -> void:
 	play("skeleton_walk")
 	$AnimationPlayer.play("monster_walk")
+	sfx_skeleton_run.play()
 	await wait(1.0)
+	sfx_skeleton_run.stop()
 	play("skeleton_attack")
-	await wait(0.9)
+	await wait(0.5)
+	sword_swing.play()
+	await wait(0.4)
 	play("skeleton_walk")
 	$AnimationPlayer.play("monster_walk_back")
+	sfx_skeleton_run.play()
 	await wait(1.0)
+	sfx_skeleton_run.stop()
 	play("skeleton_idle")
 
 	

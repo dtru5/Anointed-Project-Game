@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bucvlrjumq2ww"
+path="res://.godot/imported/big-punch-with-whoosh-103638.mp3-43accf72fc508b3022ca605e0ba8e072.mp3str"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Attacks/Sword Attacks Hits and Blocks/big-punch-with-whoosh-103638.mp3"
+dest_files=["res://.godot/imported/big-punch-with-whoosh-103638.mp3-43accf72fc508b3022ca605e0ba8e072.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

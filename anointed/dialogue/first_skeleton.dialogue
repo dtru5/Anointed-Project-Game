@@ -1,0 +1,7 @@
+~ start
+Skeleton: *bone noises because they have no mouth... or lungs*
+You: My first fight? And it's against some "no body".
+Crickets: ...
+set Global.can_move = true
+set Global.dialogue_skeleton_ended = true
+=> END

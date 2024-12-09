@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnu8k67bslvge"
+path="res://.godot/imported/Water Land.wav-cc535501e4afae544237e1c1f2556db5.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Footsteps/Water/Water Land.wav"
+dest_files=["res://.godot/imported/Water Land.wav-cc535501e4afae544237e1c1f2556db5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

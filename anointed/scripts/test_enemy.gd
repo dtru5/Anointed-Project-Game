@@ -13,11 +13,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "player":
-		#print("yes")
-		#body.is_near_enemy = true
-		#body.enemy_reference = self
-		#Game.selectedBoss = 0
-		#$Label.show()
 		if body.global_position.x >= 130 and body.global_position.x <= 150:
 			Global.player_first_fight_posx = body.global_position.x - 20
 		elif body.global_position.x > 150 and body.global_position.x <= 170:
@@ -26,6 +21,8 @@ func _on_body_entered(body: Node2D) -> void:
 			Global.player_first_fight_posx = body.global_position.x
 		Global.player_first_fight_posy = body.global_position.y
 		Global.game_exit_fight = true
+		Game.selectedBoss = Game.firstBoss
+		Game.selectedBossName = "first_boss"
 		get_tree().change_scene_to_file("res://scenes/battle.tscn")  # Switch to battle scene
 
 func _on_body_exited(body: Node2D) -> void:

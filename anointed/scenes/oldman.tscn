@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://5wcgf7am4iax"]
+
+[ext_resource type="Texture2D" uid="uid://bxahq8cycexrl" path="res://art/characters/oldman.png" id="1_pn505"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50fo7"]
+atlas = ExtResource("1_pn505")
+region = Rect2(0, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6giha"]
+atlas = ExtResource("1_pn505")
+region = Rect2(48, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deaq2"]
+atlas = ExtResource("1_pn505")
+region = Rect2(96, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktos3"]
+atlas = ExtResource("1_pn505")
+region = Rect2(144, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61ek6"]
+atlas = ExtResource("1_pn505")
+region = Rect2(192, 0, 48, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g406"]
+atlas = ExtResource("1_pn505")
+region = Rect2(240, 0, 48, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eh6m2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50fo7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6giha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deaq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktos3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61ek6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g406")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="oldman" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_eh6m2")
+frame_progress = 0.351029

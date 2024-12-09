@@ -5,9 +5,22 @@ func _ready() -> void:
 	addMonster("Skeleton")
 	addMonster("Goblin")
 	addMonster("Mushroom")
+	addBossMonster(selectedBoss, "Mushroom")
+	addBossMonster(firstBoss, "Skeleton")
+	addBossMonster(firstBoss, "Skeleton")
+	addBossMonster(skeleton, "Skeleton")
+	addBossMonster(mushroom, "Mushroom")
+	addBossMonster(goblin, "Goblin")
+	addBossMonster(finalBoss, "Skeleton")
+	addBossMonster(finalBoss, "Goblin")
+	addBossMonster(finalBoss, "Mushroom")
 	
-	addBossMonster(firstBoss, "Skeleton")
-	addBossMonster(firstBoss, "Skeleton")
+	mushroom[0]["Level"] = 3
+	goblin[0]["Level"] = 4
+	
+	finalBoss[0]["Level"] = 7
+	finalBoss[1]["Level"] = 7
+	finalBoss[2]["Level"] = 7
 	
 	healthPotions = 3
 
@@ -27,19 +40,22 @@ var dataBaseMonsters = {
 			0 : {
 				"Name" : "Bone Bash",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 14,
+				"MaxDamage" : 17,
 				"cost" : 2
 			},
 			1 : {
 				"Name" : "Rattle Stab",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 12,
+				"MaxDamage" : 20,
 				"cost" : 2
 			},
 			2 : {
 				"Name" : "Grave Slash",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 15,
+				"MaxDamage" : 16,
 				"cost" : 2
 			}
 			
@@ -61,18 +77,21 @@ var dataBaseMonsters = {
 				"Name" : "Dagger Jab",
 				"Target" : "Monster",
 				"Damage" : 10,
+				"MaxDamage" : 17,
 				"cost" : 2
 			},
 			1 : {
 				"Name" : "Theif Slash",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 15,
+				"MaxDamage" : 16,
 				"cost" : 2
 			},
 			2 : {
-				"Name" : "Bleeding Poke",
+				"Name" : "Bleed Poke",
 				"Target" : "Monster",
 				"Damage" : 10,
+				"MaxDamage" : 20,
 				"cost" : 2
 			}
 			
@@ -93,19 +112,22 @@ var dataBaseMonsters = {
 			0 : {
 				"Name" : "Spore Slam",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 15,
+				"MaxDamage" : 17,
 				"cost" : 2
 			},
 			1 : {
 				"Name" : "Cap Crush",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 9,
+				"MaxDamage" : 20,
 				"cost" : 2
 			},
 			2 : {
 				"Name" : "Zombie",
 				"Target" : "Monster",
-				"Damage" : 10,
+				"Damage" : 13,
+				"MaxDamage" : 18,
 				"cost" : 2
 			}
 			
@@ -117,13 +139,19 @@ var selectedMonsters = {
 	
 }
 
+var selectedBossName = ""
+
 var bosses = {0: firstBoss}
 
-var selectedBoss
+var selectedBoss = {
 
-var firstBoss = {
-	
 }
+
+var skeleton = {}
+var mushroom = {}
+var goblin = {}
+var firstBoss = {}
+var finalBoss = {}
 
 var healthPotions
 
@@ -146,3 +174,6 @@ func addExp(amount):
 			selectedMonsters[i]["Level"] += 1
 			selectedMonsters[i]["Exp"] = 0
 			selectedMonsters[i]["MaxExp"] = selectedMonsters[i]["MaxExp"]*1.5
+			selectedMonsters[i]["MaxHealth"] *= 1.1
+			if selectedMonsters[i]["Health"] != selectedMonsters[i]["MaxHealth"]:
+				selectedMonsters[i]["Health"] = selectedMonsters[i]["MaxHealth"]

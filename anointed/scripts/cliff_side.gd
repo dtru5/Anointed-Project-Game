@@ -18,3 +18,8 @@ func change_scene():
 		if Global.current_scene == "cliff_side":
 			Global.finish_changeScene()
 			get_tree().change_scene_to_file("res://scenes/world.tscn")
+
+
+func _on_dev_chest_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		body.is_near_enemy = true

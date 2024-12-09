@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://du7n1mgdwwbrm"]
+[gd_scene load_steps=5 format=3 uid="uid://du7n1mgdwwbrm"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_wwq6v"]
+[ext_resource type="FontFile" uid="uid://dq5l14mh12xq4" path="res://art/fonts/dogicapixel.ttf" id="2_gjk1v"]
+[ext_resource type="Texture2D" uid="uid://tvdvjxtlfq34" path="res://art/scenery/knigh_background.jpg" id="3_cn4dx"]
+[ext_resource type="AudioStream" uid="uid://c2vdu58a8wvap" path="res://art/sfx/UI_SFX/Abstract2.wav" id="4_83xk7"]
 
 [node name="Main_Menu" type="Control"]
 layout_mode = 3
@@ -27,18 +30,23 @@ theme_override_constants/separation = 18
 
 [node name="startButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("2_gjk1v")
 theme_override_font_sizes/font_size = 72
 text = "Start"
 
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("2_gjk1v")
+theme_override_font_sizes/font_size = 72
+text = "Quit"
+
 [node name="optionButton" type="Button" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Options"
-
-[node name="quitButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "Quit"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -53,7 +61,24 @@ offset_right = 334.0
 offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 128
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 43
+theme_override_constants/shadow_outline_size = 25
+theme_override_fonts/font = ExtResource("2_gjk1v")
+theme_override_font_sizes/font_size = 122
 text = "ANOINTED"
 
+[node name="KnighBackground" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(640, 360)
+texture = ExtResource("3_cn4dx")
+
+[node name="Button_Click_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_83xk7")
+volume_db = -2.971
+
+[connection signal="mouse_entered" from="VBoxContainer/startButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/startButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/quitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quit_button_pressed"]

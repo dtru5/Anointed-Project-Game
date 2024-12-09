@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://eqw7jkg7xqvo"]
+[gd_scene load_steps=45 format=3 uid="uid://eqw7jkg7xqvo"]
 
 [ext_resource type="Texture2D" uid="uid://ctgw32vw452va" path="res://art/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="1_jy6tj"]
 [ext_resource type="Texture2D" uid="uid://cvfmhmeg2wimb" path="res://art/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_w6bpg"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://b0ytgjoe4qnit" path="res://art/Monsters_Creatures_Fantasy/Skeleton/Shield.png" id="2_r3tm2"]
 [ext_resource type="Texture2D" uid="uid://bqxmwbi5ua8pd" path="res://art/Monsters_Creatures_Fantasy/Skeleton/Take Hit.png" id="2_s2y53"]
 [ext_resource type="Texture2D" uid="uid://cbfp6orsv126d" path="res://art/Monsters_Creatures_Fantasy/Skeleton/Walk.png" id="6_jeui2"]
+[ext_resource type="AudioStream" uid="uid://cy2npwdrcqs3q" path="res://art/sfx/sword-sound-effect-1-234987.mp3" id="8_xga5a"]
+[ext_resource type="AudioStream" uid="uid://c2mi6jwrtthwr" path="res://art/sfx/SFX/Attacks/Sword Attacks Hits and Blocks/step-skeleton-47785.mp3" id="9_hlx03"]
+[ext_resource type="AudioStream" uid="uid://co68byl51l33u" path="res://art/sfx/SFX/Footsteps/Dirt/Dirt Chain Run 5.wav" id="10_33i7q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk7jo"]
 atlas = ExtResource("1_w6bpg")
@@ -384,3 +387,18 @@ script = ExtResource("2_g4s7u")
 libraries = {
 "": SubResource("AnimationLibrary_8s1vx")
 }
+
+[node name="sword_swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xga5a")
+volume_db = -15.848
+
+[node name="sfx_skeleton_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_hlx03")
+volume_db = -11.886
+pitch_scale = 0.96
+attenuation = 0.392292
+
+[node name="sfx_skeleton_run" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_33i7q")
+volume_db = -7.924
+pitch_scale = 0.99

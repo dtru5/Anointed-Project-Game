@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://c0k3axoawhink"]
+[gd_scene load_steps=33 format=3 uid="uid://c0k3axoawhink"]
 
 [ext_resource type="Texture2D" uid="uid://p4ucst25xurc" path="res://art/scenery/mellow.png" id="1_7timm"]
 [ext_resource type="Script" path="res://scripts/battle.gd" id="1_pmc83"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="3_0p2y6"]
 [ext_resource type="Script" path="res://scripts/monster_ui.gd" id="3_iokm8"]
+[ext_resource type="FontFile" uid="uid://dq5l14mh12xq4" path="res://art/fonts/dogicapixel.ttf" id="5_gf1d0"]
 [ext_resource type="PackedScene" uid="uid://cbk03deoutfb7" path="res://art/characters/playerBattle.tscn" id="5_pexnl"]
 [ext_resource type="Texture2D" uid="uid://biv6keaugfrg8" path="res://art/Knight 2D Pixel Art/Sprites/without_outline/IDLE.png" id="6_tb3mx"]
 [ext_resource type="Texture2D" uid="uid://bi5ly62dnv4r" path="res://art/Health Potion/Health Potion 1.png" id="7_wg7al"]
@@ -12,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cnf3cte1j48ws" path="res://art/Health Potion/Health Potion 4.png" id="10_n5fyv"]
 [ext_resource type="Texture2D" uid="uid://b32mqtrvxasjk" path="res://art/Health Potion/Health Potion 5.png" id="11_2wbmx"]
 [ext_resource type="Texture2D" uid="uid://cd7mws6f3o32f" path="res://art/Health Potion/Health Potion 6.png" id="12_fd6l8"]
+[ext_resource type="AudioStream" uid="uid://dcoxfrqtokrp2" path="res://art/sfx/SFX/Footsteps/Dirt/Dirt Chain Land.wav" id="13_jlebs"]
+[ext_resource type="AudioStream" uid="uid://b7dl3n6jfov3e" path="res://art/sfx/UI_SFX/Abstract1.wav" id="14_5b2xf"]
+[ext_resource type="AudioStream" uid="uid://bk7fllsji4ovb" path="res://art/sfx/level-up-4-243762.mp3" id="15_fcykv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_op3rd"]
 
@@ -122,10 +126,10 @@ texture = ExtResource("1_7timm")
 [node name="MonsterUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 848.0
-offset_top = 8.0
-offset_right = 848.0
-offset_bottom = 8.0
+offset_left = 750.0
+offset_top = 28.0
+offset_right = 750.0
+offset_bottom = 28.0
 scale = Vector2(2.1, 2.1)
 script = ExtResource("3_iokm8")
 
@@ -136,6 +140,7 @@ offset_top = 96.6667
 offset_right = 167.81
 offset_bottom = 119.667
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "Monster1 lvl: 1"
 
 [node name="HpText" type="Label" parent="MonsterUI"]
@@ -146,6 +151,7 @@ offset_right = 95.8571
 offset_bottom = 142.048
 scale = Vector2(0.980952, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "10/10"
 
 [node name="HPbar" type="ProgressBar" parent="MonsterUI"]
@@ -165,28 +171,14 @@ position = Vector2(388, 661)
 [node name="Enemy" type="Node2D" parent="."]
 position = Vector2(900, 663)
 
-[node name="GameOver" type="Label" parent="."]
-offset_left = 301.0
-offset_top = 226.0
-offset_right = 1035.0
-offset_bottom = 401.0
-theme_override_colors/font_color = Color(0.907886, 0.0461354, 0.201197, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 7
-theme_override_constants/shadow_offset_y = 4
-theme_override_constants/outline_size = 15
-theme_override_constants/shadow_outline_size = 5
-theme_override_font_sizes/font_size = 128
-text = "GAME OVER"
-
 [node name="Action" type="Label" parent="."]
-offset_left = 134.0
-offset_top = 360.0
-offset_right = 382.0
-offset_bottom = 387.0
+offset_left = 133.0
+offset_top = 365.0
+offset_right = 381.0
+offset_bottom = 392.0
 scale = Vector2(0.980952, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "This is an action."
 
 [node name="UI" type="Control" parent="."]
@@ -196,17 +188,18 @@ scale = Vector2(2.1, 2.1)
 script = ExtResource("3_0p2y6")
 
 [node name="Menu" type="HBoxContainer" parent="UI"]
+visible = false
 layout_mode = 0
-offset_left = 444.286
-offset_top = 20.4762
-offset_right = 581.286
-offset_bottom = 86.4762
+offset_left = 442.857
+offset_top = 24.7619
+offset_right = 618.857
+offset_bottom = 88.7619
 theme_override_constants/separation = 45
 
 [node name="GridContainer" type="GridContainer" parent="UI/Menu"]
 layout_mode = 2
-theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 6
+theme_override_constants/h_separation = 46
+theme_override_constants/v_separation = 31
 columns = 2
 
 [node name="Fight" type="Button" parent="UI/Menu/GridContainer"]
@@ -214,6 +207,9 @@ layout_mode = 2
 focus_neighbor_right = NodePath("../Switch")
 focus_neighbor_bottom = NodePath("../Capture")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -228,6 +224,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Fight")
 focus_neighbor_bottom = NodePath("../Flee")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -241,6 +239,8 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Fight")
 focus_neighbor_right = NodePath("../Flee")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -254,6 +254,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Capture")
 focus_neighbor_top = NodePath("../Switch")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -265,16 +267,16 @@ alignment = 0
 [node name="Fight_Menu" type="HBoxContainer" parent="UI"]
 visible = false
 layout_mode = 0
-offset_left = 428.571
-offset_top = 25.2381
-offset_right = 565.571
-offset_bottom = 91.2381
+offset_left = 432.381
+offset_top = 24.2857
+offset_right = 569.381
+offset_bottom = 90.2857
 theme_override_constants/separation = 45
 
 [node name="GridContainer" type="GridContainer" parent="UI/Fight_Menu"]
 layout_mode = 2
-theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 6
+theme_override_constants/h_separation = 31
+theme_override_constants/v_separation = 33
 columns = 2
 
 [node name="Attack1" type="Button" parent="UI/Fight_Menu/GridContainer"]
@@ -282,7 +284,8 @@ layout_mode = 2
 focus_neighbor_right = NodePath("../Attack3")
 focus_neighbor_bottom = NodePath("../Attack2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -297,7 +300,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Attack1")
 focus_neighbor_bottom = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -311,7 +315,8 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Attack1")
 focus_neighbor_right = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -325,7 +330,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Attack2")
 focus_neighbor_top = NodePath("../Attack3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -335,18 +341,17 @@ text = "Back"
 alignment = 0
 
 [node name="Switch_Menu" type="HBoxContainer" parent="UI"]
-visible = false
 layout_mode = 0
-offset_left = 427.619
-offset_top = 19.0476
-offset_right = 601.619
-offset_bottom = 85.0476
+offset_left = 433.333
+offset_top = 20.4762
+offset_right = 607.333
+offset_bottom = 86.4762
 theme_override_constants/separation = 45
 
 [node name="GridContainer" type="GridContainer" parent="UI/Switch_Menu"]
 layout_mode = 2
-theme_override_constants/h_separation = 24
-theme_override_constants/v_separation = 6
+theme_override_constants/h_separation = 29
+theme_override_constants/v_separation = 40
 columns = 2
 
 [node name="Monster1" type="Button" parent="UI/Switch_Menu/GridContainer"]
@@ -354,7 +359,8 @@ layout_mode = 2
 focus_neighbor_right = NodePath("../Monster3")
 focus_neighbor_bottom = NodePath("../Monster2")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -368,7 +374,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Monster1")
 focus_neighbor_bottom = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -382,7 +389,8 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../Monster1")
 focus_neighbor_right = NodePath("../Back")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -396,6 +404,8 @@ layout_mode = 2
 focus_neighbor_left = NodePath("../Monster2")
 focus_neighbor_top = NodePath("../Monster3")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_27aql")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_i54jl")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_1lplt")
@@ -411,16 +421,18 @@ offset_top = 109.524
 offset_right = 179.572
 offset_bottom = 132.524
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "Monster1 lvl: 1"
 
 [node name="HpText" type="Label" parent="UI"]
 layout_mode = 0
-offset_left = 64.619
-offset_top = 131.905
-offset_right = 107.619
-offset_bottom = 154.905
+offset_left = 62.8571
+offset_top = 132.857
+offset_right = 130.857
+offset_bottom = 155.857
 scale = Vector2(0.980952, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "10/10"
 
 [node name="HPbar" type="ProgressBar" parent="UI"]
@@ -441,6 +453,7 @@ offset_top = 71.9048
 offset_right = 303.81
 offset_bottom = 94.9048
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "xp"
 
 [node name="PlayerBattle" parent="." instance=ExtResource("5_pexnl")]
@@ -462,15 +475,65 @@ offset_top = 370.0
 offset_right = 108.0
 offset_bottom = 399.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
 text = "x0"
 
 [node name="Press_H_Noti" type="Label" parent="."]
-offset_left = 8.0
-offset_top = 234.0
-offset_right = 126.0
-offset_bottom = 263.0
+offset_left = 16.0
+offset_top = 247.0
+offset_right = 134.0
+offset_bottom = 276.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 8
 text = "Press 'H' to use"
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+offset_left = 181.0
+offset_top = 274.0
+offset_right = 1157.0
+offset_bottom = 449.0
+theme_override_colors/font_color = Color(0.907886, 0.0461354, 0.201197, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 128
+text = "GAME OVER"
+
+[node name="Victory" type="Label" parent="."]
+visible = false
+offset_left = 280.0
+offset_top = 294.0
+offset_right = 1256.0
+offset_bottom = 469.0
+theme_override_colors/font_color = Color(0.907886, 0.0461354, 0.201197, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 0
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 15
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_gf1d0")
+theme_override_font_sizes/font_size = 128
+text = "VICTORY"
+
+[node name="Monster_change_land" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_jlebs")
+volume_db = -10.895
+
+[node name="Button_Click_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_5b2xf")
+
+[node name="Enemy_Defeated_SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_fcykv")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1189, 670)
 
 [connection signal="pressed" from="UI/Menu/GridContainer/Fight" to="UI" method="_on_fight_pressed"]
 [connection signal="pressed" from="UI/Menu/GridContainer/Switch" to="UI" method="_on_switch_pressed"]

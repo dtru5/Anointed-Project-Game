@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var walking_sfx: AudioStreamPlayer2D = $walking_sfx
+
 const speed = 100
 var current_direction = "none"
 var is_near_enemy = false
@@ -9,10 +11,14 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("front_idle")
 
 func _physics_process(delta: float) -> void:
-	player_movement(delta)
+	if Global.can_move == true:
+		player_movement(delta)
+	else:
+		$AnimatedSprite2D.play("front_idle")
 	# Check if the 'E' key is pressed and player is near the enemy
 	if Input.is_action_just_pressed("interact") and is_near_enemy:
-		start_battle()
+		Game.addExp(100)
+		$"../AudioStreamPlayer2D".play()
 	current_camera()
 	
 func player_movement(delta):
@@ -38,6 +44,13 @@ func player_movement(delta):
 
 	# Set the velocity based on direction and speed
 	velocity = direction_vector * current_speed
+	
+		# Control walking audio
+	if direction_vector != Vector2.ZERO:
+		if not walking_sfx.playing:
+			walking_sfx.play()
+	else:
+		walking_sfx.stop()
 
 	# Play appropriate animation
 	if direction_vector != Vector2.ZERO:

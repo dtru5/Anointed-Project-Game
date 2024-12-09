@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2mi6jwrtthwr"
+path="res://.godot/imported/step-skeleton-47785.mp3-b39f24fa0f8c8617d0d27e46417751ec.mp3str"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Attacks/Sword Attacks Hits and Blocks/step-skeleton-47785.mp3"
+dest_files=["res://.godot/imported/step-skeleton-47785.mp3-b39f24fa0f8c8617d0d27e46417751ec.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

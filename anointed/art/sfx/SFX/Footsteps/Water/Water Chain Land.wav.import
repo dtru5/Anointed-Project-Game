@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhhtsqmfvkiar"
+path="res://.godot/imported/Water Chain Land.wav-940795f7cdf23ab4086c1c07d19a54df.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Footsteps/Water/Water Chain Land.wav"
+dest_files=["res://.godot/imported/Water Chain Land.wav-940795f7cdf23ab4086c1c07d19a54df.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

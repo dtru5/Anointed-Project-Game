@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c285himxviy7d"
+path="res://.godot/imported/Water Run 3.wav-e81c632a53eaf63a2f0fce2ff6800cb0.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Footsteps/Water/Water Run 3.wav"
+dest_files=["res://.godot/imported/Water Run 3.wav-e81c632a53eaf63a2f0fce2ff6800cb0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

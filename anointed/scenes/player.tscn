@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://b1jy4vunhbu6e"]
+[gd_scene load_steps=42 format=3 uid="uid://b1jy4vunhbu6e"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_e3hl1"]
 [ext_resource type="Texture2D" uid="uid://dxm0441y3bxkm" path="res://art/characters/player.png" id="2_p21w2"]
+[ext_resource type="AudioStream" uid="uid://lbtj05fgkmrq" path="res://art/sfx/SFX/Footsteps/Dirt/Dirt Walk 4.wav" id="3_8556l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kqgiu"]
 atlas = ExtResource("2_p21w2")
@@ -349,3 +350,8 @@ drag_left_margin = 0.15
 drag_top_margin = 0.15
 drag_right_margin = 0.15
 drag_bottom_margin = 0.15
+
+[node name="walking_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_8556l")
+volume_db = -27.733
+pitch_scale = 1.08

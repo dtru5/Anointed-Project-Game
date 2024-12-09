@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cktg0mm5j8bt3"
+path="res://.godot/imported/Gate Close.wav-5f2ba5bdeb3da9181bb63f6fc49f302d.sample"
+
+[deps]
+
+source_file="res://art/sfx/SFX/Doors Gates and Chests/Gate Close.wav"
+dest_files=["res://.godot/imported/Gate Close.wav-5f2ba5bdeb3da9181bb63f6fc49f302d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
